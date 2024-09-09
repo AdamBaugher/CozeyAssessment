@@ -13,28 +13,8 @@ export default function PickingPage() {
 	const [products, setProducts] = useState<Product[]>([]);
 
   const fetchProducts = async (date: string) => {
-    //const res = await fetch(`/api/products/${date}`);
-    //const data = await res.json();
-    const data = [
-      {
-        "id": 1,
-        "name": "Birthday cupcake",
-        "price": 50,
-        "quantity": 1
-      },
-      {
-        "id": 2,
-        "name": "$100 Visa Gift Card",
-        "price": 100,
-        "quantity": 1
-      },
-      {
-        "id": 3,
-        "name": "Birthday card",
-        "price": 50,
-        "quantity": 1
-      }
-    ]
+    const res = await fetch(`/api/products/${date}`);
+    const data = await res.json();
     setProducts(data);
   };
 

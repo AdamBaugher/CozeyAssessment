@@ -32,78 +32,8 @@ export default function PickingPage() {
 	const [orders, setOrders] = useState<Order[]>([]);
 
 	const fetchOrders = async (date: string) => {
-		//const res = await fetch(`/api/orders/${date}`);
-		//const data = await res.json();
-    const data = [
-      {
-        "orderId": 1,
-        "orderTotal": 1500,
-        "orderDate": "2024-09-08",
-        "shippingAddress": "100 Dundas Street East",
-        "customerName": "John Smith",
-        "customerEmail": "john.smith@example.com",
-        "lineItems": [
-          {
-            "name": "Birthday Box",
-            "quantity": 1,
-            "products": [
-              {
-                "id": 1,
-                "name": "Birthday cupcake",
-                "price": 50,
-                "quantity": 1
-              },
-              {
-                "id": 2,
-                "name": "$100 Visa Gift Card",
-                "price": 100,
-                "quantity": 1
-              },
-              {
-                "id": 3,
-                "name": "Birthday card",
-                "price": 50,
-                "quantity": 1
-              }
-            ]
-          },
-          {
-            "name": "Valentines Box",
-            "quantity": 2,
-            "products": [
-              {
-                "id": 4,
-                "name": "Red Roses Bouquet",
-                "price": 50,
-                "quantity": 1
-              },
-              {
-                "id": 5,
-                "name": "Box of chocolates",
-                "price": 50,
-                "quantity": 1
-              },
-              {
-                "id": 6,
-                "name": "Love Card",
-                "price": 200,
-                "quantity": 2
-              },
-              {
-                "id": 7,
-                "name": "Women's perfume",
-                "price": 50,
-                "quantity": 3
-              }
-            ]
-          }
-        ],
-        "shipsTo": {
-          "name": "John Smith",
-          "address": "100 dundas Street east"
-        }
-      }
-    ];
+		const res = await fetch(`/api/orders/${date}`);
+		const data = await res.json();
 
 		setOrders(data);
 	}
