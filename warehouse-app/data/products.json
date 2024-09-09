@@ -1,0 +1,51 @@
+[
+    {
+      "id": 1,
+      "name": "Birthday cupcake",
+      "color": "yello",
+      "weight": "500 (g)",
+      "price": 50
+    },
+    {
+      "id": 2,
+      "name": "$100 Visa Gift Card",
+      "color": "red",
+      "weight": "0",
+      "price": 100
+    },
+    {
+      "id": 3,
+      "name": "Birthday card",
+      "color": "blue",
+      "weight": "200 (g)",
+      "price": 50
+    },
+    {
+      "id": 4,
+      "name": "Red Roses Bouquet",
+      "color": "yello",
+      "weight": "700 (g)",
+      "price": 50
+    },
+    {
+      "id": 5,
+      "name": "Box of chocolates",
+      "color": "red",
+      "weight": "400 (g)",
+      "price": 50
+    },
+    {
+      "id": 6,
+      "name": "Love Card",
+      "color": "blue",
+      "weight": "100 (g)",
+      "price": 200
+    },
+    {
+      "id": 7,
+      "name": "Women's perfume",
+      "color": "blue",
+      "weight": "200 (g)",
+      "price": 50
+    }
+  ]

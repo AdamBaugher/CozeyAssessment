@@ -5,12 +5,15 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useEffect, useState } from 'react';
 import { format } from 'date-fns';
+import Modal from '../../components/Modal';
 import { ProductDetails, Product } from '../../type/orders';
 
 export default function PickingPage() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
 	const router = useRouter();
 	const [products, setProducts] = useState<Product[]>([]);
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [selectedProduct, setSelectedProduct] = useState<ProductDetails | null>(null);
 
   const fetchProducts = async (date: string) => {
     const res = await fetch(`/api/products/${date}`);
@@ -27,6 +30,21 @@ export default function PickingPage() {
     setSelectedDate(date);
     const formattedDate = format(date ? date : new Date, 'yyyy-MM-dd');
     fetchProducts(formattedDate);
+  };
+
+  const handleOpenModal = async (productId: number) => {
+    const res = await fetch(`/api/product/${productId}`);
+    const data = await res.json();
+
+    if (data) {
+      setSelectedProduct(data);
+      setIsModalOpen(true);
+    }
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedProduct(null);
   };
 
   return (
@@ -56,6 +74,7 @@ export default function PickingPage() {
 							<th className="py-2 px-4 font-semibold text-gray-600 border-b">Product Name</th>
 							<th className="py-2 px-4 font-semibold text-gray-600 border-b">Price</th>
 							<th className="py-2 px-4 font-semibold text-gray-600 border-b">Quantity</th>
+							<th className="py-2 px-4 font-semibold text-gray-600 border-b">Details</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -65,11 +84,24 @@ export default function PickingPage() {
 							<td className="py-2 px-4 border-b">{product.name}</td>
 							<td className="py-2 px-4 border-b">{product.price}</td>
 							<td className="py-2 px-4 border-b">{product.quantity}</td>
+              <td className='py-2 px-4 border-b'>
+                <button
+                  onClick={() => handleOpenModal(product.id)}
+                  className="px-4 py-2 bg-green-500 text-white rounded"
+                >
+                  Details
+                </button>
+              </td>
 						</tr>
 					))}
 					</tbody>
 				</table>
 			</div>
+      <Modal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        productDetails={selectedProduct}
+      />
     </div>
   );
 }
