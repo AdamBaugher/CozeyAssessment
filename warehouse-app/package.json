@@ -8,8 +8,10 @@
     "test:ci": "jest --ci"
   },
   "dependencies": {
+    "date-fns": "^3.6.0",
     "next": "latest",
     "react": "^18.2.0",
+    "react-datepicker": "^7.3.0",
     "react-dom": "^18.2.0",
     "server-only": "^0.0.1"
   },

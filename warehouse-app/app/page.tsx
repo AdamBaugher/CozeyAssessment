@@ -9,6 +9,14 @@ export default function Home() {
           <h1 className="text-2xl font-bold text-gray-800 text-center mb-6">
             Warehouse Dashboard
           </h1>
+          <div className="flex flex-col space-y-4">
+            <Link href="/picking" className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-all">
+              Picking List
+            </Link>
+            <Link href="/packing" className="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-all">
+              Packing Orders
+            </Link>
+          </div>
         </div>
       </main>
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
